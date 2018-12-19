@@ -2,13 +2,13 @@
 
 ## Learning Goals
 
-1. Describe collections and `Array`s
-2. Create `Array`s
-3. Access the elements in an `Array`
-4. Add elements to an `Array`
-5. Remove elements from an `Array`
-6. Replace elements in an `Array`
-7. Identify nested `Array`s
+* Describe collections and `Array`s
+* Create `Array`s
+* Access the elements in an `Array`
+* Add elements to an `Array`
+* Remove elements from an `Array`
+* Replace elements in an `Array`
+* Identify nested `Array`s
 
 ## Introduction
 
