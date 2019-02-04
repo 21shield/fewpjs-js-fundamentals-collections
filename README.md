@@ -2,13 +2,16 @@
 
 ## Learning Goals
 
+* Define "data structure"
 * Describe collections and `Array`s
 * Create `Array`s
 * Access the elements in an `Array`
 * Add elements to an `Array`
 * Remove elements from an `Array`
 * Replace elements in an `Array`
+* Create non-destructive copies of Arrays
 * Identify nested `Array`s
+* Destructure Arrays with "Spread" (`...`) Operator
 
 ## Introduction
 
