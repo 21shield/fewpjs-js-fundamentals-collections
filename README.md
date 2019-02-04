@@ -29,11 +29,11 @@ document.getElementsByTagName() => [...multiple elements...]
 document.getElementById() => single element
 ```
 
-`getElementById()` returns a singular element whereas the former two will return all elements that match the tag or class name.
+`getElementById()` returns a **singular** element whereas the other two will return **all elements** that match the tag or class name.
 
-The first two methods' names hint, with the part **Elements** (plural), that it can return multiple matches--a _collection_. This is a collection that we're going to call an `Array`.
+The first two methods' names hint, with the part **Elements** (plural), that they can return multiple matches--a _collection_. This is a collection that we're going to call an `Array`.
 
-> **NOTE**: These methods don't actually return `Array`s. An HTMLCollection is actually returned from the first two methods. This is a major point of confusion in JavaScript! It knows its length like an `Array`. We can iterate across it. But it's not _technically_ an `Array`. This is definitely one of the "warts" of JavaScript but also shows a really mean-spirited interview question. We'll learn in a moment how to turn an `HTMLCollection` into a real Array, but for the moment, let's call it an Array.
+> **NOTE**: These methods don't actually return `Array`s. An `HTMLCollection` is _actually_ returned from the first two methods. This is a major point of confusion in JavaScript! the `HTMLCollection` knows its length like an `Array`. We can iterate across it with a `for...in...` loop. **But** it's not _technically_ an `Array`. This is definitely one of the "warts" of JavaScript but also shows a really mean-spirited interview question. We'll learn in a moment how to turn an `HTMLCollection` into a real `Array`, but for the moment, let's call it an `Array`.
 
 We can ask the DOM to give us a collection by asking it to do:
 
@@ -46,7 +46,7 @@ We can get a single member of a collection by providing an element number or, _i
 document.getElementsByTagName('main')[0]
 ```
 
-You've likely used an Array once or twice, let's learn how to make one ourself:
+You've used an `Array` once or twice, in previous material, let's learn how to make one ourself:
 
 ## Create Arrays
 
@@ -97,30 +97,24 @@ There are other ways to create new `Array`s, but they are only necessary for ver
 rare circumstances. For now, use `Array` literals.
 
 To get a sense of just how effective `Array`s are at keeping data organized, let's
-rewrite our lottery code to use an `Array`:
+store some lottery numbers an `Array`:
 
 ```js
 const winningNumbers = [32, 9, 14, 33, 48, 5];
-
-function logWinningNumbers (numbers) {
-  console.log('Winning numbers:', numbers);
-}
-
-logWinningNumbers(winningNumbers);
-// LOG: Winning numbers: [32, 9, 14, 33, 48, 5]
-// => undefined
 ```
 
 The `Array` provides organization, and we only have to remember _one_ identifier
-(`winningNumbers`) instead of six (`firstNumber`, `secondNumber`, and so on). We
-can also call `Arrays` _expressive_ because putting all the winning numbers in a
+(`winningNumbers`) instead of six (`firstNumber`, `secondNumber`, and so on).
+
+We call `Arrays` _expressive_ because putting all the winning numbers in a
 shared data structure communicates to other programmers "Hey, these things go
-together" in a way that `firstNumber`, `secondNumber`, etc. _does not_.
+together" in a way that naming them individually e.g. `firstNumber`,
+`secondNumber`, etc. _does not_.
 
 The one benefit of storing all six lottery numbers separately is that we had a
-really easy way to access each individual number. For example, we could just
-reference `powerBall` to grab the sixth number. Luckily, `Array`s offer an equally
-simple syntax for accessing individual members.
+really easy way to access each individual number. For example, might want to
+assign `powerBall` to the sixth number. Luckily, `Array`s offer a simple syntax
+for accessing individual members.
 
 ## Access the Elements in an Array
 
@@ -128,8 +122,7 @@ Every element in an `Array` is assigned a unique index value that corresponds to
 its place within the collection. The first element in the `Array` is at index `0`,
 the fifth element at index `4`, and the 428th element at index `427`.
 
-To access an element, we use the _computed member access operator_, which,
-conveniently enough, looks exactly like an `Array`:
+To access an element, we use the _computed member access operator_, AKA "square brackets."
 
 ```js
 const winningNumbers = [32, 9, 14, 33, 48, 5];
@@ -147,7 +140,7 @@ so don't worry too much about remembering the term _computed member access
 operator_.
 
 Let's take a minute to think about how we could access the **last** element in
-any `Array`.
+any `Array`. Remember, the one we want to make the `powerBall`?
 
 If `myArray` contains 10 elements, the final element will be at `myArray[9]`. If
 `myArray` contains 15000 elements, the final element will be at
@@ -172,6 +165,13 @@ JavaScript engine _computed_ the value of that expression to determine which
 element we were trying to access. In this case, `alphabet.length - 1` evaluated
 to `25`, so `alphabet[alphabet.length - 1]` became `alphabet[25]`.
 
+While we could certainly get our lottery's `powerBall` with `winningNumbers[5]`,
+the more flexible and less error-prone solution is:
+
+```js
+let powerBall = winningNumbers[winningNumbers.length - 1]`
+```
+
 ## Add Elements to an Array
 
 JavaScript allows us to manipulate the members in an `Array` in a number of ways.
@@ -180,13 +180,13 @@ JavaScript allows us to manipulate the members in an `Array` in a number of ways
 
 With the `.push()` method, we can add elements to the end of an `Array`:
 ```js
-const superheroes = ['Catwoman', 'She-Hulk', 'Jessica Jones'];
+const superheroes = ['Catwoman', "Miss Marvel", 'She-Hulk', 'Jessica Jones'];
 
 superheroes.push('Wonder Woman');
-// => 4
+// => 5
 
 superheroes;
-// => ["Catwoman", "She-Hulk", "Jessica Jones", "Wonder Woman"]
+// => ["Catwoman", "Miss Marvel", "She-Hulk", "Jessica Jones", "Wonder Woman"]
 ```
 
 We can also `.unshift()` elements onto the beginning of an `Array`:
@@ -247,6 +247,12 @@ coolCats;
 allCats;
 // => ["Hobbes", "Felix", "Tom", "Garfield"]
 ```
+
+[garf]: http://nowiknow.com/starving-garfield/
+
+> **ASIDE**: "Garfield" might actually pretty cool. Many comics fans have suspected
+Jim Davis, Garfield's creator, might be doing some sort of existentialist
+[pop art][garf], prefiguring "The Good Place by ~ 40 years.
 
 ## Remove Elements from an Array
 
@@ -383,6 +389,10 @@ days.slice(-3);
 
 When we provide a negative index, the JavaScript engine knows to start counting
 from the last element in the `Array` instead of the first.
+
+***DO NOT read about slice() and shrug and move on. It's used everywhere in JavaScript
+code and having to look up it's parameters every time is a major time-loss. Memorize its
+call format now.***
 
 ### `.splice()`
 
