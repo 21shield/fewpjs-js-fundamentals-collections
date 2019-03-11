@@ -41,7 +41,7 @@ The first two methods' names hint, with the part **Elements** (plural), that the
 We can ask the DOM to give us a collection by asking it to do:
 
 ```js
-document.getElementsByTagName('p')`.
+document.getElementsByTagName('p')
 ```
 We can get a single member of a collection by providing an element number or, _index_ in `[]` after the collection. This was done as follows:
 
