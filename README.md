@@ -251,12 +251,6 @@ allCats;
 // => ["Hobbes", "Felix", "Tom", "Garfield"]
 ```
 
-[garf]: http://nowiknow.com/starving-garfield/
-
-> **ASIDE**: "Garfield" might actually pretty cool. Many comics fans have suspected
-Jim Davis, Garfield's creator, might be doing some sort of existentialist
-[pop art][garf], prefiguring "The Good Place by ~ 40 years.
-
 ## Remove Elements from an Array
 
 As complements for `.push()` and `.unshift()`, respectively, we have `.pop()`
