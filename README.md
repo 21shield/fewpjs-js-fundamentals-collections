@@ -115,7 +115,7 @@ together" in a way that naming them individually e.g. `firstNumber`,
 `secondNumber`, etc. _does not_.
 
 The one benefit of storing all six lottery numbers separately is that we had a
-really easy way to access each individual number. For example, might want to
+really easy way to access each individual number. For example, we might want to
 assign `powerBall` to the sixth number. Luckily, `Array`s offer a simple syntax
 for accessing individual members.
 
