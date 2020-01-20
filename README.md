@@ -36,7 +36,7 @@ document.getElementById() => single element
 
 The first two methods' names hint, with the part **Elements** (plural), that they can return multiple matches--a _collection_. This is a collection that we're going to call an `Array`.
 
-> **NOTE**: These methods don't actually return `Array`s. An `HTMLCollection` is _actually_ returned from the first two methods. This is a major point of confusion in JavaScript! the `HTMLCollection` knows its length like an `Array`. We can iterate across it with a `for...in...` loop. **But** it's not _technically_ an `Array`. This is definitely one of the "warts" of JavaScript but also shows a really mean-spirited interview question. We'll learn in a moment how to turn an `HTMLCollection` into a real `Array`, but for the moment, let's call it an `Array`.
+> **NOTE**: These methods don't actually return `Array`s. An `HTMLCollection` is _actually_ returned from the first two methods. This is a major point of confusion in JavaScript! the `HTMLCollection` knows its length like an `Array`. We can iterate across it with a `for...in...` loop. **But** it's not _technically_ an `Array`. This is definitely one of the "warts" of JavaScript but also shows a really mean-spirited interview question. It is not difficult to turn an `HTMLCollection` into an actual `Array` (using a loop, for example) but for our purposes we can treat it as an `Array`.
 
 We can ask the DOM to give us a collection by asking it to do:
 
@@ -172,7 +172,7 @@ While we could certainly get our lottery's `powerBall` with `winningNumbers[5]`,
 the more flexible and less error-prone solution is:
 
 ```js
-let powerBall = winningNumbers[winningNumbers.length - 1]`
+let powerBall = winningNumbers[winningNumbers.length - 1]
 ```
 
 ## Add Elements to an Array
